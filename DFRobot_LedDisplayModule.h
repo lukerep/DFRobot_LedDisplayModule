@@ -52,14 +52,8 @@ public:
 public:
  /**
    * @brief Constructor
-   * @param pWire I2C bus pointer object. When calling the function, you may transfer a parameter into it. Defaule as Wire
-   * @param addr 8 bits I2C address, the IIC address of 4 bits digital tube in default is 0x48, The IIC address of 8 bits digital tube can be changed by combining A1 and A0
-   * @n In default, the IIC address of 8 bits digital tube is 0xE0
-   * 1  1  1  0  | 0  A1 A0 0
-     1  1  1  0  | 0  0  0  0    0xE0
-     1  1  1  0  | 0  0  1  0    0xE2
-     1  1  1  0  | 0  1  0  0    0xE4
-     0  0  1  0  | 0  1  1  0    0xE6
+   * @param pWire I2C bus pointer object. When calling the function, you may transfer a parameter into it. Default as Wire
+   * @param addr the IIC address of 4 bits digital tube in default is 0x48
    */
   DFRobot_LedDisplayModule(TwoWire &wire, uint8_t ledAddress);
 
@@ -68,12 +62,6 @@ public:
    *  @return Return 0 if the initialization is successful, otherwise return non-zero
    */
   int begin4();
-
-  /*!
-   *  @brief Initialize the 8 bits digital tube
-   *  @return Return 0 if the initialization is successful, otherwise return non-zero
-   */
-  // int begin8();
 
   /*!
    *  @brief Turn ON the display
@@ -88,25 +76,25 @@ public:
   void displayOff();
 
   /*!
-   *  @brief Flash mode of the 8 bits digital tube, flash at 0.5Hz
+   *  @brief Flash mode of the 4 bits digital tube, flash at 0.5Hz
    *  @param IIC flash command
    */
   void flashTwos();
 
   /*!
-   *  @brief Flash mode of the 8 bits digital tube, flash at 1Hz
+   *  @brief Flash mode of the 4 bits digital tube, flash at 1Hz
    *  @param IIC flash command
    */
   void flashOnes();
 
   /*!
-   *  @brief Flash mode of the 8 bits digital tube, flash at 2Hz
+   *  @brief Flash mode of the 4 bits digital tube, flash at 2Hz
    *  @param IIC flash command
    */
   void flashHalfs();
 
   /*!
-   *  @brief The 8 bits digital tube stops flash
+   *  @brief The 4 bits digital tube stops flash
    *  @param IIC command to stop flash
    */
   void stopFlash();
@@ -118,23 +106,11 @@ public:
   void setBrightness4(int brightnessValue);
 
   /*!
-   *  @brief Set brightness of the 8 bits digital tube
-   *  @param The brightness value can be set to numbers 1~16
-   */
-  // void setBrightness8(int brightnessValue);
-
-  /*!
    *  @brief Display area of the 4 bits digital tube
    *  @param Display area from the first bit to the fourth bit could be number 1~4.
    */
   void setDisplayArea4(int areaData1 = 82,int areaData2 = 82,int areaData3 = 82,int areaData4 = 82);
-
-  /*!
-   *  @brief Display area of the 8 bits digital tube
-   *  @param Display area from the first bit to the eighth bit could be number 1~8
-   */
-  // void setDisplayArea8(int areaData1,int areaData2,int areaData3,int areaData4,int areaData5,int areaData6,int areaData7,int areaData8);
-
+  
   /*!
    *  @brief Set the decimal points of the 4 bits.
    *  @param decimals byte value to indicate which bits to be on/off in LSB order.
@@ -166,38 +142,20 @@ public:
    */
   void print4(const char buf1[], const char buf2[], const char buf3[], const char buf4[]);
 
-  /*!
-   *  @brief Print data of the 8 bits digital tube
-   *  @param could be both integer and decimal
-   */
-  // void print8(double sensorData);
-
-  /*!
-   *  @brief Print data of the 8 bits digital tube
-   *  @param
-   *  @n Displayed data of bit 1 to bit 8 could be the numbers 0 to 9, capital letters A, B, C, D, E, F, H, L, O, P, U and dash-,
-   *  @n and it also could be decimal points, such as "0." "9." "A." "-."
-   */
-  //  void print8(const char buf1[], const char buf2[], const char buf3[], const char buf4[], const char buf5[], const char buf6[], const char buf7[], const char buf8[]);
-
 private:
   TwoWire *_pWire;
   uint8_t _ledAddress;  /**< IIC Address */
   byte displayAreaFlag;  /**< Display area flag */
-  byte data1,data2,data3,data4,data5,data6,data7,data8;  /**< Display data buffer*/
-  unsigned char ledData1,ledData11,ledData2,ledData22,ledData3,ledData33,ledData4,ledData44,ledData5,ledData55,ledData6,ledData66,ledData7,ledData77,ledData8,ledData88;  /**< Input data buffer */
+  byte data1,data2,data3,data4;  /**< Display data buffer*/
+  unsigned char ledData1,ledData11,ledData2,ledData22,ledData3,ledData33,ledData4,ledData44;  /**< Input data buffer */
 
   byte d11;
   byte d21,d22;
   byte d31,d32,d33;
-  byte d41,d42,d43,d44;
-  byte d51,d52,d53,d54,d55;
-  byte d61,d62,d63,d64,d65,d66;
-  byte d71,d72,d73,d74,d75,d76,d77;
-  byte d81,d82,d83,d84,d85,d86,d87,d88;   /**< Display area data buffer*/
+  byte d41,d42,d43,d44; /**< Display area data buffer*/
 
-  byte d1,d2,d3,d4,d5,d6,d7;
-  byte a1,a2,a3,a4,a5,a6,a7;  /**< Display address data buffer*/
+  byte d1,d2,d3;
+  byte a1,a2,a3;  /**< Display address data buffer*/
 
   const unsigned char TAB2[38]={0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x00,0x00,0x00,0x00,0x00,0x00,0x00,  /**< 0~9 then :;<=>?@ */
                                 0x77,0x7C,0x39,0x5E,0x79,0x71,  /**< A~F */
@@ -229,13 +187,6 @@ private:
   void i2cWriteCmd(uint8_t cmd);
 
   /*!
-   *  @brief The 8-bit digital tube sends IIC data
-   *  @param Register address
-   *  @param IIC data
-   */
-  // void i2cWriteData(uint8_t reg,uint8_t data);
-
-  /*!
    *  @brief 4-bit digital tube to send IIC data
    *  @param Register address
    *  @param IIC data
@@ -260,25 +211,9 @@ private:
   void getDisplayAddress43();
 
   /*!
-   *  @brief The 8bits digital tube to get the display address
-   */
-  // void getDisplayAddress81();
-  // void getDisplayAddress82();
-  // void getDisplayAddress83();
-  // void getDisplayAddress84();
-  // void getDisplayAddress85();
-  // void getDisplayAddress86();
-  // void getDisplayAddress87();
-
-  /*!
    *  @brief The 4bits digital tube to get the display address(sensor data mode)
    */
   void sensorGetDisplayAddress4();
-
-  /*!
-   *  @brief The 8bits digital tube to get the display address(sensor data mode)
-   */
-  // void sensorGetDisplayAddress8();
 
   /**
    * @brief I2C address detection

@@ -1,6 +1,8 @@
 # Outline
 This is a fork of the original repo at: https://github.com/DFRobot/DFRobot_LedDisplayModule
+
 Originally had issues compile errors trying to use it out of the box on an ESP32 so I decided to get that fixed up.
+
 Note that this repo will only have support for the 4-digit module in order to reduce the library size, I may in the future add in 8-digit support or create another add-on repo to support that.
 
 There have also been various changes such as additional character support, minimising library size and easier functions to interact with the displays.

@@ -1,14 +1,14 @@
 /*!
  * @file DFRobot_LedDisplayModule.h
  * @brief Define the basic structure of class DFRobot_LedDisplayModule
- * @n This is a 4bits/8bits digital tube that controlled by IIC interface.
- * @n And the IIC address of 8bits digital tube can be changed by hardware
+ * @n This is a 4bits digital tube that controlled by IIC interface.
  * @n The main functions of the digital tube is as below:
- * @n Show 4bits / 8bot numbers and decimal points
- * @n At present, it only supports showing the numbers 0 to 9, capital letters A, B, C, D, E, F, H, L, O, P, U and dash-,
+ * @n Show 4bits numbers and decimal points
+ * @n At present, it only supports showing the show numbers from 0 to 9, letters A, B, C, D, E, F, G, H, I, J, L, N, O, P, Q, R, S, T, U and dash (-) and period (.).
  * @n And you can also bring decimal points, such as "0." "9." "A." "-."
  *
- * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
+ * @copyright   Portions Copyright (c) 2021 Luke Rep-Baihelfer
+ * @copyright   Portions Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @licence     The MIT License (MIT)
  * @author [Actor](wenzheng.wang@dfrobot.com)
  * @version  V1.0

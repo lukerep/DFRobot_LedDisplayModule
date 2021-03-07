@@ -16,7 +16,7 @@ The IIC address of 4 bits digital tube in default is 0x48. <br>
 ## DFRobot_LedDisplayModule for Arduino
 ---------------------------------------------------------
 Provide an Arduino library for the Led Display Module.
-   
+
 ## Table of Contents
 
 * [Summary](#summary)
@@ -37,64 +37,44 @@ To use this library, please download the library file first and paste it into th
 ## Methods
 
 ```C++
-   /*!
-   *  @brief Initialize the 4bits 
-   *  @return Return 0 if initialization succeeds, otherwise return non-zero.
-   */ 
+/**
+   * @brief Constructor
+   * @param pWire I2C bus pointer object. When calling the function, you may transfer a parameter into it. Default as Wire
+   * @param addr the IIC address of 4 bits digital tube in default is 0x48
+   */
+  DFRobot_LedDisplayModule(TwoWire &wire, uint8_t ledAddress);
+
+  /*!
+   *  @brief  the 4 bits digital tube
+   *  @return Return 0 if the initialization is successful, otherwise return non-zero
+   */
   int begin4();
 
   /*!
-   *  @brief Start display
-   *  @param Command to start display
+   *  @brief Turn ON the display
+   *  @param IIC command to turn ON the display
    */
   void displayOn();
-  
-  /*!
-   *  @brief End display
-   *  @param Command to end displaying
-   */  
-  void displayOff();
 
   /*!
-   *  @brief Flash mode of the 8 bits digital tube, flash at 0.5Hz
-   *  @param IIC flash command
+   *  @brief Turn OFF the display
+   *  @param IIC command to turn OFF the display
    */
-  void flashTwos();
-  
-  /*!
-   *  @brief Flash mode of the 8 bits digital tube, flash at 1HZ
-   *  @param IIC flash command
-   */
-  void flashOnes();
-  
-  /*!
-   *  @brief Flash mode of the 8 bits digital tube, flash at 2HZ 
-   *  @param IIC flash command
-   */
-  void flashHalfs();
-  
-  /*!
-   *  @brief The 8 bits digital tube stops flash 
-   *  @param IIC command to stop flash
-   */
-  void stopFlash();
+  void displayOff();
 
   /*!
    *  @brief Set brightness of the 4 bits digital tube
    *  @param The brightness value can be set to numbers 1~8
    */
-  void setBrightness4(int brightnessValue); 
+  void setBrightness4(int brightnessValue);
 
   /*!
-   *  @brief Display area of the 4bits digital tube 
-   *  @param The display address of the first bit to fourth bit could be numbers 1~4
+   *  @brief Display area of the 4 bits digital tube
+   *  @param Display area from the first bit to the fourth bit could be number 1~4.
    */
-  void setDisplayArea4(int areaData);
-  void setDisplayArea4(int areaData1,int areaData2);
-  void setDisplayArea4(int areaData1,int areaData2,int areaData3);
-  void setDisplayArea4(int areaData1,int areaData2,int areaData3,int areaData4);
+  void setDisplayArea4(int areaData1 = 82,int areaData2 = 82,int areaData3 = 82,int areaData4 = 82);
 
-   /*!
+  /*!
    *  @brief Set the decimal points of the 4 bits.
    *  @param decimals byte value to indicate which bits to be on/off in LSB order.
    *  @n 0b00000000 would turn them all off.
@@ -114,13 +94,14 @@ To use this library, please download the library file first and paste it into th
   /*!
    *  @brief Print data of the 4 bits digital tube
    *  @param It could be both integer and decimal
-   */  
+   */
   void print4(double sensorData);
-  
+
   /*!
-   *  @brief Print data of the 4 bits digital tube
-   *  @param Displayed data of bit 1 to bit 4 could be the numbers 0 to 9, capital letters A, B, C, D, E, F, H, L, O, P, U and dash-. 
-   *  @n and also could be decimal points, such as "0." "9." "A." "-."
+   *  @brief 4Print data of the 4 bits digital tube
+   *  @param
+   *  @n Displayed data of bit 1 to bit 4 could be the numbers 0 to 9, capital letters A, B, C, D, E, F, H, L, O, P, U and dash-,
+   *  @n and it also could be decimal points, such as "0." "9." "A." "-."
    */
   void print4(const char buf1[], const char buf2[], const char buf3[], const char buf4[]);
 ```
@@ -129,11 +110,11 @@ To use this library, please download the library file first and paste it into th
 
 MCU                | Work Well    | Work Wrong   | Untested    | Remarks
 ------------------ | :----------: | :----------: | :---------: | -----
-Arduino Uno        |             |              |      √       | 
-Mega2560        |             |              |       √      | 
-Leonardo        |             |              |      √       | 
-ESP32         |      √       |              |             | 
-micro:bit        |             |              |     √        | 
+Arduino Uno        |             |              |      √       |
+Mega2560        |             |              |       √      |
+Leonardo        |             |              |      √       |
+ESP32         |      √       |              |             |
+micro:bit        |             |              |     √        |
 
 ## History
 

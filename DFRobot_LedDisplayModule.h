@@ -76,30 +76,6 @@ public:
   void displayOff();
 
   /*!
-   *  @brief Flash mode of the 4 bits digital tube, flash at 0.5Hz
-   *  @param IIC flash command
-   */
-  void flashTwos();
-
-  /*!
-   *  @brief Flash mode of the 4 bits digital tube, flash at 1Hz
-   *  @param IIC flash command
-   */
-  void flashOnes();
-
-  /*!
-   *  @brief Flash mode of the 4 bits digital tube, flash at 2Hz
-   *  @param IIC flash command
-   */
-  void flashHalfs();
-
-  /*!
-   *  @brief The 4 bits digital tube stops flash
-   *  @param IIC command to stop flash
-   */
-  void stopFlash();
-
-  /*!
    *  @brief Set brightness of the 4 bits digital tube
    *  @param The brightness value can be set to numbers 1~8
    */
@@ -110,7 +86,7 @@ public:
    *  @param Display area from the first bit to the fourth bit could be number 1~4.
    */
   void setDisplayArea4(int areaData1 = 82,int areaData2 = 82,int areaData3 = 82,int areaData4 = 82);
-  
+
   /*!
    *  @brief Set the decimal points of the 4 bits.
    *  @param decimals byte value to indicate which bits to be on/off in LSB order.
@@ -157,7 +133,7 @@ private:
   byte d1,d2,d3;
   byte a1,a2,a3;  /**< Display address data buffer*/
 
-  const unsigned char TAB2[38]={0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x00,0x00,0x00,0x00,0x00,0x00,0x00,  /**< 0~9 then :;<=>?@ */
+  const unsigned char TAB2[38] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x00,0x00,0x00,0x00,0x00,0x00,0x00,  /**< 0~9 then :;<=>?@ */
                                 0x77,0x7C,0x39,0x5E,0x79,0x71,  /**< A~F */
                                 0x3D,
                                 0x76,                /**< H */
@@ -169,7 +145,7 @@ private:
                                 0x3E};               /**< U */                                                                   /**< Display data */
 
 // These are all 8 bits with the MSB being the decimal point for the . character
-  const unsigned char TAB_Point2[38]={0xBF,0x86,0xDB,0xCF,0xE6,0xED,0xFD,0x87,0xFF,0xEF,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+  const unsigned char TAB_Point2[38] = {0xBF,0x86,0xDB,0xCF,0xE6,0xED,0xFD,0x87,0xFF,0xEF,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
                                       0xF7,0xFC,0xB9,0xDE,0xF9,0xF1,
                                       0xBD,
                                       0xF6,

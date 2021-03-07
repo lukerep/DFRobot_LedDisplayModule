@@ -44,26 +44,6 @@ void DFRobot_LedDisplayModule::displayOff()
   i2cWriteCmd(CMD_HT16K33_DISPLAYOFF);
 }
 
-void DFRobot_LedDisplayModule::flashTwos()
-{
-  i2cWriteCmd(CMD_HT16K33_FLASHTWOS);
-}
-
-void DFRobot_LedDisplayModule::flashOnes()
-{
-  i2cWriteCmd(CMD_HT16K33_FLASHONES);
-}
-
-void DFRobot_LedDisplayModule::flashHalfs()
-{
-  i2cWriteCmd(CMD_HT16K33_FLASHHALFS);
-}
-
-void DFRobot_LedDisplayModule::stopFlash()
-{
-  i2cWriteCmd(CMD_HT16K33_STOPFLASH);
-}
-
 void DFRobot_LedDisplayModule::setBrightness4(int brightnessValue)
 {
   if(brightnessValue == 8) brightnessValue = 0;

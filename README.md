@@ -27,7 +27,7 @@ Provide an Arduino library for the Led Display Module.
 * [Credits](#credits)
 
 ## Summary
-This is an Arduino IDE library to help realize the communication between the 4bits/8bits digital tube and Arduino<br>
+This is an Arduino IDE library to help realize the communication between the 4bit digital tube and Arduino<br>
 The library ease the control of display by IIC<br>
 
 ## Installation

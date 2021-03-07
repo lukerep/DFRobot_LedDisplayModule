@@ -38,10 +38,6 @@
 #define CMD_HT16K33_OSCON       0x21  /**< Turn ON the clock */
 #define CMD_HT16K33_DISPLAYOFF  0x80  /**< Turn OFF the display */
 #define CMD_HT16K33_DISPLAYON   0x81  /**< Turn ON the display*/
-#define CMD_HT16K33_FLASHTWOS   0x87  /**< Set the mode to flash at 0.5Hz*/
-#define CMD_HT16K33_FLASHONES   0x85  /**< Set the mode to flash at 1Hz*/
-#define CMD_HT16K33_FLASHHALFS  0x83  /**< Set the mode to flash at 2Hz*/
-#define CMD_HT16K33_STOPFLASH   0x81  /**< Flash end*/
 
 class DFRobot_LedDisplayModule
 {

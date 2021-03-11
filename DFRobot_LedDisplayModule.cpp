@@ -163,10 +163,12 @@ void DFRobot_LedDisplayModule::setDecimals(byte decs) {
 }
 
 void DFRobot_LedDisplayModule::printString(const char buf[]) {
-  ledData1 = buf[0];
-  ledData2 = buf[1];
-  ledData3 = buf[2];
-  ledData4 = buf[3];
+  // If the character passed in is a space, set it to the '?' char so it displays empty
+  // The space character is no in the lookup table for TAB/TAB_POINT2 so decimals don't work with it
+  ledData1 = buf[0] == ' ' ? '?' : buf[0];
+  ledData2 = buf[1] == ' ' ? '?' : buf[1];
+  ledData3 = buf[2] == ' ' ? '?' : buf[2];
+  ledData4 = buf[3] == ' ' ? '?' : buf[3];
 
   getDisplayData();
   switch(displayAreaFlag)
